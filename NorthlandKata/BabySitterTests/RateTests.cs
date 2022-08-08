@@ -15,6 +15,7 @@ namespace BabySitterTests
         public void RateBeforeBedTimeReturnsCorrectAmount(string start , string bed )
         {
             //Arrange
+            NightJob testObject = new NightJob(DateTime.Parse(start), DateTime.Parse(bed), DateTime.Parse("4am"));
             NightJob job = new NightJob();
             DateTime startTime = job.RoundToNearestHour( DateTime.Parse(start));
             DateTime bedTime = job.RoundToNearestHour(DateTime.Parse(bed));
@@ -24,7 +25,7 @@ namespace BabySitterTests
 
 
             //Act
-            double charge = job.ChargeBeforeBed(startTime, bedTime);
+            double charge = job.ChargeBeforeBed();
             //Assert
             Assert.AreEqual(charge, (timespanInt == 0 ? 0.00 : tester)); //if bedtime and startime aren't the same time charge should match tester
             Assert.IsNotNull(charge);
@@ -41,6 +42,7 @@ namespace BabySitterTests
         public void RateBetweenBedAndMidnightReturnsCorrectAmount(string bedtime)
         {
             //Arrange
+            NightJob testObject = new NightJob(DateTime.Parse("5pm"), DateTime.Parse(bedtime), DateTime.Parse("4am"));
             NightJob job = new NightJob();
             DateTime bedTime = job.RoundToNearestHour(DateTime.Parse(bedtime));
             DateTime midnight = job.RoundToNearestHour(DateTime.Parse("12am"));
@@ -49,7 +51,7 @@ namespace BabySitterTests
             double tester = timespanInt * 8;
             
             //Act
-            double charge = job.ChargeFromBedToMidnight(bedTime, midnight);
+            double charge = testObject.ChargeFromBedToMidnight();
             //Assert
             Assert.AreEqual(charge, (timespanInt == 0 ? 0.00 : tester)); 
             Assert.IsNotNull(charge);
@@ -61,6 +63,7 @@ namespace BabySitterTests
         public void RateBetweenMidnightAndEndReturnsCorrectAmount(string end)
         {
             //Arrange
+            NightJob testObject = new NightJob(DateTime.Parse("5pm"), DateTime.Parse("8pm"), DateTime.Parse(end));
             NightJob job = new NightJob();
             DateTime endTime = job.RoundToNearestHour(DateTime.Parse(end));
             DateTime midnight = job.RoundToNearestHour(DateTime.Parse("12am"));
@@ -68,7 +71,7 @@ namespace BabySitterTests
             int timespanInt = Convert.ToInt32(timespan.Hours);
             double tester = timespanInt * 8;
             //Act
-            double charge = job.ChargeFromMidnightToEnd(midnight, endTime);
+            double charge = testObject.ChargeFromMidnightToEnd();
             //Assert
             Assert.AreEqual(charge, (timespanInt == 0 ? 0.00 : tester));
             Assert.IsNotNull(charge);
@@ -79,6 +82,7 @@ namespace BabySitterTests
         public void NightlyChargeReturnsCorrectAmountHappy(string start, string bed, string end)
         {
             //Arrange
+            NightJob testObject = new NightJob(DateTime.Parse(start), DateTime.Parse(bed), DateTime.Parse(end));
             NightJob job = new NightJob();
             DateTime startTime = job.RoundToNearestHour(DateTime.Parse(start));
             DateTime bedTime = job.RoundToNearestHour(DateTime.Parse(bed));
@@ -86,7 +90,7 @@ namespace BabySitterTests
             DateTime midnight = DateTime.Parse("12am");
 
             //Act
-            double charge = job.NightlyCharge(startTime, bedTime, midnight, endTime);
+            double charge = testObject.NightlyCharge();
             //Assert
             Assert.AreEqual(charge, 132.00);
         }
@@ -95,6 +99,7 @@ namespace BabySitterTests
         public void NightlyChargeReturnsCorrectAmountEdge1(string start, string bed, string end)
         {
             //Arrange
+            NightJob testObject = new NightJob(DateTime.Parse(start), DateTime.Parse(bed), DateTime.Parse(end));
             NightJob job = new NightJob();
             DateTime startTime = job.RoundToNearestHour(DateTime.Parse(start));
             DateTime bedTime = job.RoundToNearestHour(DateTime.Parse(bed));
@@ -102,7 +107,7 @@ namespace BabySitterTests
             DateTime midnight = DateTime.Parse("12am");
 
             //Act
-            double charge = job.NightlyCharge(startTime, bedTime, midnight, endTime);
+            double charge = testObject.NightlyCharge();
             //Assert
             Assert.AreEqual(charge, 56.00);
         }
@@ -111,6 +116,7 @@ namespace BabySitterTests
         public void NightlyChargeReturnsCorrectAmountEdge2(string start, string bed, string end)
         {
             //Arrange
+            NightJob testObject = new NightJob(DateTime.Parse(start), DateTime.Parse(bed), DateTime.Parse(end));
             NightJob job = new NightJob();
             DateTime startTime = job.RoundToNearestHour(DateTime.Parse(start));
             DateTime bedTime = job.RoundToNearestHour(DateTime.Parse(bed));
@@ -118,7 +124,7 @@ namespace BabySitterTests
             DateTime midnight = DateTime.Parse("12am");
 
             //Act
-            double charge = job.NightlyCharge(startTime, bedTime, midnight, endTime);
+            double charge = testObject.NightlyCharge();
             //Assert
             Assert.AreEqual(charge, 92.00);
         }
@@ -127,6 +133,7 @@ namespace BabySitterTests
         public void NightlyChargeReturnsCorrectAmountHappy2(string start, string bed, string end)
         {
             //Arrange
+            NightJob testObject = new NightJob(DateTime.Parse(start), DateTime.Parse(bed), DateTime.Parse(end));
             NightJob job = new NightJob();
             DateTime startTime = job.RoundToNearestHour(DateTime.Parse(start));
             DateTime bedTime = job.RoundToNearestHour(DateTime.Parse(bed));
@@ -134,7 +141,7 @@ namespace BabySitterTests
             DateTime midnight = DateTime.Parse("12am");
 
             //Act
-            double charge = job.NightlyCharge(startTime, bedTime, midnight, endTime);
+            double charge = job.NightlyCharge();
             //Assert
             Assert.AreEqual(charge, 128.00);
         }

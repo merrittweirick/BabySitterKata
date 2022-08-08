@@ -81,26 +81,77 @@ namespace BabySitterKata
         }
 
         // method for amount made before bedtime - $12
-        public double ChargeBeforeBed(DateTime start, DateTime bed)
+        public double ChargeBeforeBed()
         {
-            return 0;
+            DateTime roundedStart = RoundToNearestHour(StartTime);
+            DateTime roundedBed = RoundToNearestHour(BedTime);
+            double rateBeforeBed;
+            double rateBeforeMidnight;
+
+            if(roundedStart >= roundedBed)// in case job starts at bedtime or after kid is asleep
+            {
+                return 0.00;
+            }
+            else if (roundedBed > Midnight)// if bedtime is after midnight
+            {
+                TimeSpan hoursTillMidnight = Midnight - roundedStart;
+                TimeSpan hoursUntilBed = roundedBed - Midnight;
+                rateBeforeMidnight = hoursTillMidnight.Hours * 12.00;
+                rateBeforeBed = hoursUntilBed.Hours * 16.00; // decided to give them the $16 rate instead of $8 rate because babysitters don't get paid enough as it is
+                return (rateBeforeBed + rateBeforeMidnight);
+            }
+            else
+            {
+                TimeSpan hoursUntilBed = roundedBed - roundedStart;
+                rateBeforeBed = hoursUntilBed.Hours * 12;
+                return rateBeforeBed;
+            }
         }
         
         // method for bedtime to midnight- $8
-        public double ChargeFromBedToMidnight(DateTime bedtime, DateTime midnight)
+        public double ChargeFromBedToMidnight()
         {
-            return 0;
+            DateTime roundedBed = RoundToNearestHour(BedTime);
+            double rateBeforeMidnight;
+           
+            if(roundedBed >= Midnight) // if this edgecase happens do nothing (handled in previous method)
+            {
+                return 0.00;
+            }
+            else
+            {
+                TimeSpan hoursUntilMidnight = Midnight - roundedBed;
+                rateBeforeMidnight = hoursUntilMidnight.Hours * 8;
+                return rateBeforeMidnight;
+            }
         }
         //method made for amount made before 4AM -$16
-        public double ChargeFromMidnightToEnd(DateTime midnight, DateTime endTime)
+        public double ChargeFromMidnightToEnd()
         {
-            return 0;
+            DateTime roundedEnd = RoundToNearestHour(EndTime);
+            double rateAfterMidnight;
+           
+            if(Midnight >= roundedEnd) // handled in previous methods do nothing
+            {
+                return 0.00; 
+            }
+            else
+            {
+                TimeSpan hoursUntilEnd = roundedEnd - Midnight;
+                rateAfterMidnight = hoursUntilEnd.Hours * 16;
+                return rateAfterMidnight;
+            }
+            
         }
 
         //nightly charge method
-        public double NightlyCharge(DateTime start, DateTime bed, DateTime midnight, DateTime end)
+        public double NightlyCharge()
         {
-            return 0;
+            double chargeBeforeBed = ChargeBeforeBed();
+            double chargeFromBedToMidnight = ChargeFromBedToMidnight();
+            double chargeFromMidnightToEnd = ChargeFromMidnightToEnd();
+            double nightlyCharge = chargeBeforeBed + chargeFromBedToMidnight + chargeFromMidnightToEnd;
+            return nightlyCharge;
         }
     }
 }
