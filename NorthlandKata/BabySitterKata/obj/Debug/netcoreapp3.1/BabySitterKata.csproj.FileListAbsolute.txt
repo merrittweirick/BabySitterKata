@@ -1,0 +1,14 @@
+C:\Users\Student\source\repos\BabySitterKata\NorthlandKata\BabySitterKata\bin\Debug\netcoreapp3.1\BabySitterKata.exe
+C:\Users\Student\source\repos\BabySitterKata\NorthlandKata\BabySitterKata\bin\Debug\netcoreapp3.1\BabySitterKata.deps.json
+C:\Users\Student\source\repos\BabySitterKata\NorthlandKata\BabySitterKata\bin\Debug\netcoreapp3.1\BabySitterKata.runtimeconfig.json
+C:\Users\Student\source\repos\BabySitterKata\NorthlandKata\BabySitterKata\bin\Debug\netcoreapp3.1\BabySitterKata.runtimeconfig.dev.json
+C:\Users\Student\source\repos\BabySitterKata\NorthlandKata\BabySitterKata\bin\Debug\netcoreapp3.1\BabySitterKata.dll
+C:\Users\Student\source\repos\BabySitterKata\NorthlandKata\BabySitterKata\bin\Debug\netcoreapp3.1\BabySitterKata.pdb
+C:\Users\Student\source\repos\BabySitterKata\NorthlandKata\BabySitterKata\obj\Debug\netcoreapp3.1\BabySitterKata.csproj.AssemblyReference.cache
+C:\Users\Student\source\repos\BabySitterKata\NorthlandKata\BabySitterKata\obj\Debug\netcoreapp3.1\BabySitterKata.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Student\source\repos\BabySitterKata\NorthlandKata\BabySitterKata\obj\Debug\netcoreapp3.1\BabySitterKata.AssemblyInfoInputs.cache
+C:\Users\Student\source\repos\BabySitterKata\NorthlandKata\BabySitterKata\obj\Debug\netcoreapp3.1\BabySitterKata.AssemblyInfo.cs
+C:\Users\Student\source\repos\BabySitterKata\NorthlandKata\BabySitterKata\obj\Debug\netcoreapp3.1\BabySitterKata.csproj.CoreCompileInputs.cache
+C:\Users\Student\source\repos\BabySitterKata\NorthlandKata\BabySitterKata\obj\Debug\netcoreapp3.1\BabySitterKata.dll
+C:\Users\Student\source\repos\BabySitterKata\NorthlandKata\BabySitterKata\obj\Debug\netcoreapp3.1\BabySitterKata.pdb
+C:\Users\Student\source\repos\BabySitterKata\NorthlandKata\BabySitterKata\obj\Debug\netcoreapp3.1\BabySitterKata.genruntimeconfig.cache
