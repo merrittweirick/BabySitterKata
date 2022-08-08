@@ -20,14 +20,14 @@ namespace BabySitterTests
             DateTime startTime = job.RoundToNearestHour( DateTime.Parse(start));
             DateTime bedTime = job.RoundToNearestHour(DateTime.Parse(bed));
             TimeSpan timespan = bedTime - startTime;
-            int timespanInt = Convert.ToInt32(timespan.Hours);
+            int timespanInt = Math.Abs(Convert.ToInt32(timespan.Hours));
             double tester = timespanInt * 12;
 
 
             //Act
-            double charge = job.ChargeBeforeBed();
+            double charge = testObject.ChargeBeforeBed();
             //Assert
-            Assert.AreEqual(charge, (timespanInt == 0 ? 0.00 : tester)); //if bedtime and startime aren't the same time charge should match tester
+            Assert.AreEqual(charge, tester); //if bedtime and startime aren't the same time charge should match tester
             Assert.IsNotNull(charge);
 
 
@@ -95,7 +95,7 @@ namespace BabySitterTests
             Assert.AreEqual(charge, 132.00);
         }
         [DataTestMethod]
-        [DataRow("5pm", "5pm", "12am")]
+        [DataRow("5pm", "5pm", "12am")] // start and bed are same time end is midnight
         public void NightlyChargeReturnsCorrectAmountEdge1(string start, string bed, string end)
         {
             //Arrange

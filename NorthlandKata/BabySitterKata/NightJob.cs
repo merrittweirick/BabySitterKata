@@ -55,7 +55,7 @@ namespace BabySitterKata
         //method for rounding time using DateTime.Minute comparison
         public DateTime RoundToNearestHour(DateTime time)
         {
-           
+            DateTime watch = time;
             DateTime roundedTime;
             TimeSpan clearMinutes = new TimeSpan((time.Hour), 0, 0);
             TimeSpan increaseOneHour = new TimeSpan((time.Hour + 1), 0, 0);
